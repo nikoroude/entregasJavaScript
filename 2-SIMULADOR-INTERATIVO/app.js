@@ -2,13 +2,10 @@
 
 let idTramite = 0;
 let idPaciente
-let entry
 let nombre
 let surname
 let namePatient
-let dataFunction
 let opcion
-
 
 // ! Declaracion de funciones
 
@@ -19,14 +16,6 @@ function requestEntry() {
     3. Esc`)
     console.log(opcion);
 }
-
-// opcion = prompt(`Por favor, ingrese el numero de la accion que desea realizar: \n 
-// 1. Nuevo paciente \n
-// 2. Nuevo trámite \n
-// 3. Esc`)
-
-// requestEntry();
-// console.log(opcion)
 
 function api() {
 
