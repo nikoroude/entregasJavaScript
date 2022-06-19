@@ -74,7 +74,7 @@ function listarArray(a){
 // }
 
 function autogestion() {
-    logIn();
+    // logIn();
     requestEntry();
     // opcion = opcion.toLowerCase();
 
@@ -188,3 +188,60 @@ function autogestion() {
 }
 
 autogestion();
+/*
+// listar pacientes
+
+arrayPacientes.forEach(function(Paciente){
+    console.log(Paciente);
+});
+
+// listar pedidos
+
+arrayPedidos.forEach(function(Pedidos){
+    console.log(Pedidos);
+});
+
+// eliminar paciente
+
+let buscado = "36104562";
+arrayPacientes.forEach(function(Paciente,index){
+    if (Paciente.dni == buscado){
+        arrayPacientes.splice(index,1);
+        console.log(`El paciente ${Paciente.fullName} con dni: ${Paciente.dni}; ha sido eliminado`);
+    }
+}) //* ¿deberia reasignar los id del paciente? id = id - 1??
+
+
+arrayPacientes.forEach(function(Paciente){
+    console.log(Paciente);
+});
+// (Paciente.dni == "12345678"){
+//     arrayPacientes.splice(arrayPacientes.indexOf(Paciente), 1);
+//         console.log(`El paciente ${Paciente.fullName} ha sido eliminado`);
+
+// eliminar pedido
+
+arrayPedidos.forEach(function(Pedidos,index){
+    if (Pedidos.dni == buscado){
+        arrayPedidos.splice(index,1);
+        console.log(`El paciente ${Pedidos.fullName} con dni: ${Pedidos.dni}; ha sido eliminado`);
+    }
+}) //* ¿deberia reasignar los id de los pedidos? id = id - 1??
+*/
+
+// Existe paciente?
+
+function buscar(a, key, parametro){
+    let buscado = a.some(buscado => buscado.key == parametro);
+    if (buscado == true) {
+        console.log(`El paciente que busca existe`);
+    } else (buscado == false)
+        console.log(`El paciente que busca no existe`);
+    }
+
+
+buscar(arrayPacientes, "dni", "36104562");
+
+console.log("otro metodo de busqueda");
+console.log(arrayPacientes.some(buscado => buscado.dni == "12345678"));
+
