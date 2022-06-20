@@ -10,23 +10,41 @@
             margin: 0;
             padding: 0;
         }
+
         body {
             margin: 0 auto;
-            background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             background-repeat: no-repeat;
 
         }
 
+        .tittle {
+            margin: 0 0 2rem 0;
+            padding: 2rem 0 0 0;
+        }
+        
         h1 {
+            margin: 0 2rem 0 2rem;
+            padding: 0 2rem 0 2rem;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 2rem;
             text-align: center;
-            color: rgba(214, 228, 241);
+            color: rgb(0, 0, 0);
         }
         
-        h3{
+        .img {
+            margin: 0 2rem 0 2rem;
+            padding: 0 2rem 0 2rem;
+            text-align: center;
+        }
+
+        h3 {
             display: inline-block;
-            color:#20002c;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: #20002c;
             text-decoration: none;
             border-radius: 5px;
             padding: 5px;
@@ -35,11 +53,11 @@
             border: 1px solid #20002c;
         }
 
-        h3:hover{
+        h3:hover {
             position: absolute;
             bottom: 0;
             right: 0;
-            background: #20002c;
+            background: #896994;
             color: #ffffff;
         }
     </style>
@@ -47,11 +65,19 @@
 </head>
 
 <body>
-    <h1>PRIMERA PRE ENTREGA DEL PROYECTO FINAL DE JAVASCRIPT</h1>
+    <div class="tittle">
+        <h1>PRIMERA PRE ENTREGA DEL PROYECTO FINAL DE JAVASCRIPT</h1>
+    </div>
 
-    <h3><a href="../index.html">VOLVER</a></h3>
+    <div class="img">
+        <img src="img.png" alt="img">
+    </div>
 
-    <script src="main.js"></script>
+    <div class="btn">
+        <h3><a href="../index.html">VOLVER</a></h3>
+    </div>
+
+    <!-- <script src="main.js"></script> -->
 </body>
 
 </html>

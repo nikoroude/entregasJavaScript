@@ -49,7 +49,10 @@ function requestEntry() {
     Por favor, ingrese ingrese la opcion que desea realizar \n
     1. Nuevo paciente \n
     2. Autorizaciones \n
-    3. Salir`);
+    3. Listar \n
+    4. Eliminar \n
+    5. Consultar \n
+    6. Salir`);
 }
 
 function choisePedido() {
@@ -69,6 +72,43 @@ function listarArray(a){
     console.log(a);
 }
 
+function Listar(a){
+    a.forEach(function(e){
+        console.log(e);
+    });
+}
+
+function eliminar(a, key, buscado){
+    a.forEach(function(key,index){
+        if (key.dni == buscado){
+            arrayPacientes.splice(index,1);
+            // console.log(`El paciente ${key.fullName} con dni: ${key.dni}; ha sido eliminado`);
+        }
+    })
+}
+
+function consultar (a, parametro){
+    let index = a.findIndex( (e) => e.dni == parametro);
+    if (index != -1 ){
+        console.log(`Su busqueda arrojo el siguiente resultado`)
+        console.log(a[index]);
+    } else if (index == -1){
+        console.log("No se encontro el paciente");
+        alert("No se encontro el paciente");
+    }
+}
+
+
+function buscar(a, key, parametro){
+    let buscado = a.some(e => e.key = parametro);
+    if (buscado == true) {
+        console.log(`El paciente que busca existe`);
+    } else if (buscado == false){
+        console.log(`El paciente que busca no existe`);
+    }
+}
+
+
 // function incremento(idPaciente) {
 //     return idPaciente++;
 // }
@@ -78,7 +118,7 @@ function autogestion() {
     requestEntry();
     // opcion = opcion.toLowerCase();
 
-    while (opcion != "3") {
+    while (opcion != "6") {
         if (opcion == "1") {
             alert(`Por favor, ingrese los datos del nuevo paciente que desea cargar.`);
             nombre = prompt("Nombre del paciente:");
@@ -87,6 +127,7 @@ function autogestion() {
             namePatient = namePatient.toUpperCase();
             dni = prompt("DNI / LC / LE:");
             obraSocial = prompt("Obra social del paciente, si no tiene deje el campo vacio");
+            obraSocial = obraSocial.toUpperCase();
             idPaciente = idPaciente + 1;
             const pacienteNuevo = new Paciente(namePatient, dni, obraSocial, idPaciente); //* asigna el nuevo paciente mediante la creacion del objeto definido
             carga(arrayPacientes, pacienteNuevo);
@@ -176,7 +217,40 @@ function autogestion() {
                 alert("Los datos ingresados no son validos. Por favor, ingrese nuevamente");
                 requestEntry();
             }
-        } else if (opcion<"1" || opcion>"3"){
+        } else if (opcion == "3") { // listar
+            let arr = prompt(`Elija el numero de la opcion segun corresponda \n 1. Listar pacientes \n 2. Listar pedidos`);
+            if (arr == "1") {
+                console.log(`Listado de pacientes:`);
+                Listar(arrayPacientes);
+                requestEntry();
+            } else if (arr == "2") {
+                console.log(`Listado de pedidos:`);
+                Listar(arrayPedidos);
+                requestEntry();
+            }
+        } else if (opcion == "4") { // eliminar
+            let buscado = prompt(`Elija el numero de la opcion segun corresponda \n 1. Eliminar pacientes \n 2. Eliminar pedidos`);
+            if (buscado == "1") {
+                buscado = prompt("Ingrese el DNI del paciente. Tenga en cuenta que esta accion no se puede deshacer.");
+                // falta agregar pedido de confirmacion (si/no)
+                eliminar(arrayPacientes, Paciente, buscado);
+                console.log(`El paciente ha sido eliminado.`);
+                alert(`El paciente ha sido eliminado.`);
+                requestEntry();
+            } else if (buscado == "2") {
+                buscado = prompt("Ingrese el DNI del paciente. Tenga en cuenta que esta accion no se puede deshacer.");
+                // falta agregar pedido de confirmacion (si/no)
+                eliminar(arrayPedidos, Pedidos, buscado);
+                console.log(`El pedido ha sido eliminado.`);
+                alert(`El pedido ha sido eliminado.`);
+                requestEntry();
+            }
+        } else if (opcion == "5") { // consultar por dni
+            let buscado = prompt (`Por favor, ingrese el DNI del paciente que desea consultar`);
+            consultar(arrayPacientes, buscado);
+            requestEntry();
+            // buscar(arrayPacientes, dni, buscado);
+        } else if (opcion<"1" || opcion>"6"){
             alert("Los datos ingresados no son validos. Por favor, ingrese nuevamente");
             requestEntry();
         } else{
@@ -200,6 +274,7 @@ arrayPacientes.forEach(function(Paciente){
 arrayPedidos.forEach(function(Pedidos){
     console.log(Pedidos);
 });
+
 
 // eliminar paciente
 
@@ -229,18 +304,7 @@ arrayPedidos.forEach(function(Pedidos,index){
 }) //* ¿deberia reasignar los id de los pedidos? id = id - 1??
 */
 
-// Existe paciente?
-
-function buscar(a, key, parametro){
-    let buscado = a.some(buscado => buscado.key == parametro);
-    if (buscado == true) {
-        console.log(`El paciente que busca existe`);
-    } else (buscado == false)
-        console.log(`El paciente que busca no existe`);
-    }
-
-
-buscar(arrayPacientes, "dni", "36104562");
+buscar(arrayPacientes, dni, "36104562");
 
 console.log("otro metodo de busqueda");
 console.log(arrayPacientes.some(buscado => buscado.dni == "12345678"));
