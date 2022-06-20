@@ -188,6 +188,8 @@ function autogestion() {
                 alert(`Por favor, ingrese los datos solicitados.`);
                 nombre = prompt("Nombre del paciente:");
                 apellido = prompt("Apellido del paciente:");
+                namePatient = `${apellido}, ${nombre}.`
+                namePatient = namePatient.toUpperCase();
                 dni = prompt("DNI / LC / LE:");
                 obraSocial = "IOSPER";
                 pedido = "CIRUGIA";
@@ -202,6 +204,8 @@ function autogestion() {
                 alert(`Por favor, ingrese los datos solicitados.`);
                 nombre = prompt("Nombre del paciente:");
                 apellido = prompt("Apellido del paciente:");
+                namePatient = `${apellido}, ${nombre}.`
+                namePatient = namePatient.toUpperCase();
                 dni = prompt("DNI / LC / LE:");
                 obraSocial = prompt("Obra Social");
                 obraSocial = obraSocial.toUpperCase();
