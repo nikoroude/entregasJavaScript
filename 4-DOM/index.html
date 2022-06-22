@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>DOM</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar bg-success text-white">
+            <div class="container-fluid">
+                <span class="navbar-brand text-white mb-0 h1">JAVASCRIPT - DOM</span>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container-fluid row align-items-between justify-content-between mt-5">
+        <h2 class="tittle">LISTA DE PACIENTES</h2>
+        <div class="col-6 justify-content-center">
+            <div class="mb-3 col-6">
+                <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="formNombre" placeholder="Nombre">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="formGroupExampleInput2" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="formApellido" placeholder="Apellido">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="formGroupExampleInput2" class="form-label">DNI</label>
+                <input type="text" class="form-control" id="formDni" placeholder="DNI">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="formGroupExampleInput2" class="form-label">Obra Social</label>
+                <input type="text" class="form-control" id="formObraSocial" placeholder="Obra Social">
+            </div>
+            <button type="button" id="cargar" onclick="cargarPaciente()" class="btn btn-success">CARGAR
+                PACIENTE</button>
+        </div>
+        <div class="col-6 mt-4">
+            <ul id="list__pacientes" class="list-group">
+                <li class="list-group-item">
+                    <h4>Nombre y Apellido: PEDRO, GONZALEZ.</h4>
+                    <p>DNI: 25125362</p>
+                    <p>Obra Social: PAMI</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <button type="button" id="cargarD" class="text-white btn btn-success btn-fixed"><a
+            href="../index.html">VOLVER</a></button>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
