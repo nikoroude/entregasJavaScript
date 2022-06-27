@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>EVENTOS</title>
+</head>
+
+<body class="bg-dark bg-gradient">
+    <header>
+        <nav class="navbar bg-secondary bg-gradient text-white">
+            <div class="container-fluid">
+                <span class="navbar-brand text-white mb-0 h1">JAVASCRIPT - EVENTOS</span>
+                <button type="button" id="volver" onclick="alert(`Saliendo de la pagina`)"
+                    class="text-white btn btn-success"><a href="../index.html">VOLVER</a></button>
+            </div>
+        </nav>
+    </header>
+
+    <!--  -->
+
+    <h1 class="text-white h1">Autogestion</h1>
+
+    <p class="container-fluid text-center m-0-auto">
+        <a class="m-2 btn btn-success" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+            aria-expanded="false" aria-controls="multiCollapseExample1">NUEVO PACIENTE</a>
+        <button class="m-2 btn btn-success" type="button" data-bs-toggle="collapse"
+            data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">NUEVO
+            PEDIDO</button>
+        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button> -->
+    </p>
+    <div class="container-fluid row">
+        <div class="col-6">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    <form class="m-2 col justify-content-center" onreset="resetForm()">
+                        <!-- div container formulario -->
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="formNombre" placeholder="Nombre del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="formApellido"
+                                placeholder="Apellido del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="formDni" placeholder="DNI del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Obra Social</label>
+                            <input type="text" class="form-control" id="formObraSocial"
+                                placeholder="Obra Social del paciente">
+                        </div>
+                        <button type="reset" id="cargar" class="m-1 btn btn-success">RESTABLECER FORMULARIO</button>
+                        <button type="button" id="cargar" onclick="cargarPaciente()" class="m-1 btn btn-success">CARGAR
+                            PACIENTE</button>
+                    </form> <!-- fin div container formulario -->
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                    <form class="m-2 col justify-content-center" id="formPedidos">
+                        <!-- div container formulario -->
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="formNombre" placeholder="Nombre del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="formApellido"
+                                placeholder="Apellido del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="formDni" placeholder="DNI del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Obra Social</label>
+                            <select id="selectObraSocial" class="form-select opcion__obraSocial" onfocus="this.size=10" onblur='this.size=1;'
+                                onchange='this.size=1; this.blur();'>
+                                <option selected value="">Elija su Obra Social</option>
+                                <option value="otro">NO POSEO OBRA SOCIAL</option>
+                                <option value="iosper">IOSPER</option>
+                                <option value="otro">ISSPICA</option>
+                                <option value="pami">PAMI</option>
+                                <option value="otro">PREVENCION SALUD</option>
+                                <option value="otro">PODER JUDICIAL</option>
+                                <option value="otro">POLICIA FEDERAL</option>
+                                <option value="otro">SANCOR SALUD</option>
+                                <option value="otro">SOMU</option>
+                                <option value="otro">OSPE</option>
+                                <option value="otro">OSDE</option>
+                                <option value="otro">UNIMEDICA</option>
+                                <option value="otro">SWISS MEDICAL</option>
+                                <option value="otro">OTRA OBRA SOCIAL</option>
+                            </select>
+                        </div>
+                        <div id="selectPedido" class="mb-3 col">
+
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="inputState" class="form-label">Pedido</label>
+                            <input type="file" class="form-control" id="formFile" placeholder="Pedido">
+                        </div>
+                        <button type="reset" type="reset" class="m-1 btn btn-success">RESTABLECER
+                            FORMULARIO</button>
+                        <button type="button" id="cargar" onclick="cargarPedido()" class="m-1 btn btn-success">CARGAR
+                            PEDIDO</button>
+                    </form> <!-- fin div container formulario -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Lista de cargados -->
+
+    <div class="row">
+        <div class="col-6 mt-4">
+            <ul id="list__pacientes" class="list-group">
+                <!-- lista de pacientes -->
+                <li class="list-group-item">
+
+                </li>
+            </ul>
+        </div>
+        <div class="col-6 mt-4">
+            <ul id="list__pedidos" class="list-group">
+                <!-- lista de pedidos -->
+                <li class="list-group-item">
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
