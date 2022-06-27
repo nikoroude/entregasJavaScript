@@ -72,21 +72,21 @@
                         <!-- div container formulario -->
                         <div class="mb-3 col">
                             <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="formNombre" placeholder="Nombre del paciente">
+                            <input type="text" class="form-control" id="formPedidoNombre" placeholder="Nombre del paciente">
                         </div>
                         <div class="mb-3 col">
                             <label for="formGroupExampleInput2" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="formApellido"
+                            <input type="text" class="form-control" id="formPedidoApellido"
                                 placeholder="Apellido del paciente">
                         </div>
                         <div class="mb-3 col">
                             <label for="formGroupExampleInput2" class="form-label">DNI</label>
-                            <input type="text" class="form-control" id="formDni" placeholder="DNI del paciente">
+                            <input type="text" class="form-control" id="formPedidoDni" placeholder="DNI del paciente">
                         </div>
                         <div class="mb-3 col">
                             <label for="formGroupExampleInput2" class="form-label">Obra Social</label>
-                            <select id="selectObraSocial" class="form-select opcion__obraSocial" onfocus="this.size=10" onblur='this.size=1;'
-                                onchange='this.size=1; this.blur();'>
+                            <select id="selectObraSocial" class="form-select opcion__obraSocial" onfocus="this.size=10"
+                                onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                                 <option selected value="">Elija su Obra Social</option>
                                 <option value="otro">NO POSEO OBRA SOCIAL</option>
                                 <option value="iosper">IOSPER</option>
@@ -105,7 +105,17 @@
                             </select>
                         </div>
                         <div id="selectPedido" class="mb-3 col">
-
+                            <label for="formGroupExampleInput2" class="form-label">Tipo de Pedido</label>
+                            <select id="selectPedido" class="form-select opcion__obraSocial">
+                                <option value="cirugia">CIRUGIA</option>
+                                <option selected value="consulta">CONSULTA</option>
+                                <option value="ecodoppler">ECODOPPLER</option>
+                                <option value="eeg - emg">ELECTROENCEFALOGRAMA - ELECTROMIOGRAFIA</option>
+                                <option value="gastroenterologia">GASTROENTEROLOGIA</option>
+                                <option value="hemodinamia">HEMODINAMIA</option>
+                                <option value="rmn - tac">RMN - TAC</option>
+                                <option value="rx">RADIOGRAFIA</option>
+                            </select>
                         </div>
                         <div class="mb-3 col">
                             <label for="inputState" class="form-label">Pedido</label>
