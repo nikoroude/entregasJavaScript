@@ -74,3 +74,17 @@ li {
 .d-none {
     display: none;
 }
+
+.m-l {
+    margin-left: 18rem !important;
+}
+
+.m-r {
+    margin-right: 18rem !important;
+}
+
+
+
+#destinoResult > p {
+    line-height: 0.5rem;
+}

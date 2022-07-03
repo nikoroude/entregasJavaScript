@@ -46,72 +46,90 @@ class Pedidos {
 
 function carga(arrayDestino, objeto) {
     arrayDestino.push(objeto);
+    let arrayJSON = JSON.stringify(arrayDestino);
+    (arrayDestino === arrayPacientes) ? localStorage.setItem("listaPacientesStorage", arrayJSON) : localStorage.setItem("listaPedidosStorage", arrayJSON)
+}
+
+function printAll(key) {
+    let array = JSON.parse(localStorage.getItem(key));
+    console.log(array);
+    alert(array);
+}
+
+function printPaciente(P) {
+    console.log(`Busqueda exitosa: ` , P);
+    let destino = document.getElementById('destinoResult')
+    destino.innerHTML = `<p>Paciente: ${P.fullName}</p>
+                        <p>DNI: ${P.dni}</p>
+                        <p>Obra Social: ${P.obraSocial}</p>`;
+}
+
+function printPedido(P) {
+    console.log(`Busqueda exitosa: ` , P);
+    let destino = document.getElementById('destinoResult')
+    destino.innerHTML = `<p>Paciente: ${P.fullName}</p>
+                        <p>DNI: ${P.dni}</p>
+                        <p>Obra Social: ${P.obraSocial}</p>
+                        <p>Pedido: ${P.pedido}</p>
+                        <p>Número de trámite: ${P.id}</p>`;
+}
+
+function noExiste() {
+    destino = document.getElementById('destinoResult');
+    destino.innerHTML = `<p>El paciente que busca no existe en los registros!</p>`;
 }
 
 function listarArray(a) {
     console.log(a);
 }
 
-function resetForm() {
-    alert(`Formulario reseteado!`);
+// function resetForm() {
+//     alert(`Formulario reseteado!`);
+// }
+
+// document.getElementById("formPedidos").addEventListener("reset", resetForm);
+
+
+//! buscar en localStorage el paciente que tenga dni === dniTarget, si existe abre modal con los datos del paciente, sino muestra mensaje de que no existe
+
+const buscarPaciente = () => {
+    let dniTarget = document.getElementById("dniTarget").value;
+    let array = JSON.parse(localStorage.getItem("listaPacientesStorage"));
+    let existe = false;
+    let encontrado;
+    for (let i = 0; i <= array.length; i++) {
+        if (array[i].dni === dniTarget) {
+            existe = true;
+            encontrado = array[i];
+            printPaciente(encontrado)
+            break;
+        } else if (existe === false) {
+            noExiste();
+        }
+    }
+    // (existe == false) ? alert(`El paciente que busca no existe en los registros!`) : printPaciente(encontrado);
 }
 
-document.getElementById("formPedidos").addEventListener("reset", resetForm);
+const buscarPedido = () => {
+    let pedidoTarget = document.getElementById("pedidoTarget").value;
+    let array = JSON.parse(localStorage.getItem("listaPedidosStorage"));
+    let existe = false;
+    let encontrado;
+    for (let i = 0; i <= array.length; i++) {
+        if (array[i].dni === pedidoTarget) {
+            existe = true;
+            encontrado = array[i];
+            printPedido(encontrado)
+            break;
+        } else if (existe === false) {
+            noExiste();
+        }
+    }
+    // (existe == false) ? alert(`El paciente que busca no existe en los registros!`) : printPedido(encontrado);
+}
 
 
-
-// si selectObraSocial es distinto de "pami", agregar la clase "d-none" a las clases "selectOption"
-let obraSocialSeleccionada = document.getElementById("selectObraSocial").value
-let opcionDisponible = document.getElementsByClassName("selectOption");
-
-obraSocialSeleccionada.addEventListener("change", function () {
-    if (obraSocialSeleccionada === "PAMI") {
-        // opcionDisponible.classList.remove("d-none");
-        opcionDisponible.classList.toggle("d-none");
-    } /*else {
-        opcionDisponible.classList.add("d-none");
-    }*/
-});
-
-// Todo: OTRO METODO????
-
-obraSocialSeleccionada.onchange = () => {
-    if (obraSocialSeleccionada === "PAMI") {
-        // opcionDisponible.classList.remove("d-none");
-        opcionDisponible.classList.toggle("d-none");
-    } /*else {
-        opcionDisponible.classList.add("d-none");
-    }*/
-};
-
-
-
-
-// let selectElement = document.getElementById('selectObraSocial');
-// selectElement.addEventListener('change', (event) => {
-//     // si la obra social es pami, se crea una etiqueta select con los tipos de pedidos, si no, pedido="cirugia"
-//     if (event.target.value === "pami") {
-//         let selectPedido = document.getElementById('selectPedido');
-//         const theLabel = document.createElement('label');
-//         const theSelect = document.createElement('select');
-//         theSelect.classList.add(`form-select`);
-//         const theOptions = document.innerHTML(`<option>Consulta</option>
-//                                                     <option>Cirugia</option>
-//                                                     <option>RX</option>
-//                                                     <option>RMN - TAC</option>
-//                                                     <option>EEG - EMG</option>
-//                                                     <option>ECOGRAFIA - ECODOPPLER</option>`);
-//         selectPedido.appendChild(theSelect);
-//         selectPedido.appendChild(theLabel);
-//         theSelect.appendChild(theOptions);
-//         // theSelect.appendChild(theOptions);
-
-//     } else if (event.target.value == "otro") {
-//         let selectPedido = document.getElementById('selectPedido');
-//         selectPedido.innerHTML = `<option value="cirugia">Cirugia</option>`;
-//     }
-// });
-
+//TODO-> CARGAR NUEVO PACIENTE
 const cargarPaciente = () => {
     let listaPacientes = document.getElementById("list__pacientes")
     let nombre = document.getElementById("formNombre").value;
@@ -130,10 +148,10 @@ const cargarPaciente = () => {
         idPaciente = idPaciente + 1;
         const pacienteNuevo = new Paciente(namePatient, dni, obraSocial, idPaciente); //* asigna el nuevo paciente mediante la creacion del objeto definido
         carga(arrayPacientes, pacienteNuevo);
-        console.log(`El nuevo paciente ha sido cargado con el numero ${idPaciente} \n Paciente: ${namePatient} \n Obra Social: ${obraSocial} \n D.N.I: ${dni}`)
-        alert(`El nuevo paciente ha sido cargado con el numero ${idPaciente} \n Paciente: ${namePatient} \n Obra Social: ${obraSocial} \n D.N.I: ${dni}`);
-        console.log(`Se cargó con exito el objeto ${pacienteNuevo.fullName}, id: ${pacienteNuevo.id}`); //* si se muestra en consola si cargo correctamente
         listarArray(arrayPacientes);
+        //printAll("listaPacientesStorage");
+        //resetForm();
+
 
 
         let nuevoPaciente = document.createElement("li")
@@ -143,13 +161,13 @@ const cargarPaciente = () => {
                                     <p>Obra Social: ${obraSocial}</p>`
 
         document.addEventListener('DOMContentLoaded', function () {
-            let formulario = document.getElementById('formul');
+            let formulario = document.getElementById('formPedidos');
             formulario.addEventListener('submit', function () {
                 formulario.reset();
             });
         });
 
-        listaPacientes.append(nuevoPaciente);
+        // listaPacientes.append(nuevoPaciente);  //! agrega el nuevo paciente al listado en el html
 
     } else if (confirmacion == "n" || confirmacion == "N") {
         console.log(`Carga cancelada!`)
@@ -157,6 +175,7 @@ const cargarPaciente = () => {
     }
 }
 
+//TODO-> CARGAR NUEVO PEDIDO
 const cargarPedido = () => {
     let listaPedidos = document.getElementById("list__pedidos")
     let nombre = document.getElementById("formPedidoNombre").value;
@@ -165,12 +184,12 @@ const cargarPedido = () => {
     let obraSocial = document.getElementById("selectObraSocial").value;
     let pedido = document.getElementById("selectPedido").value;
 
-    
+
     nombre = nombre.toUpperCase();
     apellido = apellido.toUpperCase();
     namePatient = `${apellido}, ${nombre}`;
     obraSocial = obraSocial.toUpperCase();
-    // pedido = pedido.toUpperCase();
+    pedido = pedido.toUpperCase();
 
 
 
@@ -178,11 +197,8 @@ const cargarPedido = () => {
 
     if (confirmacion == "y" || confirmacion == "Y") {
         idTramite = idTramite + 1;
-        const pedidoNuevo = new Pedidos(namePatient, dni, obraSocial, pedido, idTramite);
+        const pedidoNuevo = new Pedidos(namePatient, dni, obraSocial, pedido, idTramite); //* asigna el nuevo paciente mediante la creacion del objeto definido
         carga(arrayPedidos, pedidoNuevo);
-        alert(`El nuevo pedido ha sido cargado con el número ${idTramite} \n Paciente: ${namePatient} \n D.N.I: ${dni} \n Obra social: ${obraSocial} \n Pedido: ${pedido}`);
-        console.log(`El nuevo pedido ha sido cargado con el numero ${idTramite} \n Paciente: ${namePatient} \n D.N.I: ${dni} \n Obra social: ${obraSocial} \n Pedido: ${pedido}`);
-        console.log(`Se cargó con exito el objeto ${pedidoNuevo.fullName}, id: ${pedidoNuevo.id}`); //* si se muestra en consola si cargo correctamente
         listarArray(arrayPedidos);
 
         let nuevoPedido = document.createElement("li")
@@ -200,7 +216,7 @@ const cargarPedido = () => {
             });
         });
 
-        listaPedidos.append(nuevoPedido);
+        //listaPedidos.append(nuevoPedido);
 
     } else if (confirmacion == "n" || confirmacion == "N") {
         console.log(`Carga cancelada!`)

@@ -8,14 +8,14 @@
     <!-- css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>EVENTOS</title>
+    <title>2da PRE-ENTREGA</title>
 </head>
 
 <body class="bg-dark bg-gradient">
     <header>
         <nav class="navbar bg-secondary bg-gradient text-white">
             <div class="container-fluid">
-                <span class="navbar-brand text-white mb-0 h1">JAVASCRIPT - EVENTOS</span>
+                <span class="navbar-brand text-white mb-0 h1">JAVASCRIPT - 2da PRE-ENTREGA</span>
                 <button type="button" id="volver" onclick="alert(`Saliendo de la pagina`)"
                     class="text-white btn btn-success"><a href="../index.html">VOLVER</a></button>
             </div>
@@ -24,19 +24,23 @@
 
     <!--  -->
 
-    <h1 class="text-white h1">Autogestion</h1>
+    <h1 class="text-white h1">Autogestión</h1>
 
-    <p class="container-fluid text-center m-0-auto">
-        <a class="m-2 btn btn-success" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
-            aria-expanded="false" aria-controls="multiCollapseExample1">NUEVO PACIENTE</a>
-        <button class="m-2 btn btn-success" type="button" data-bs-toggle="collapse"
-            data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">NUEVO
+    <div class="menu container-fluid navbar m-0-auto">
+        <a class="m-2 btn btn-success mx-5" data-bs-toggle="collapse" href="#nuevoPacienteFormulario" role="button"
+            aria-expanded="false" aria-controls="nuevoPacienteFormulario">NUEVO PACIENTE</a>
+        <button type="button" class="btn btn-success mx-5" data-bs-toggle="modal" data-bs-target="#buscarPaciente">
+            BUSCAR PACIENTE</button>
+        <button class="m-2 btn btn-success mx-5" type="button" data-bs-toggle="collapse"
+            data-bs-target="#nuevoPedidoFormulario" aria-expanded="false" aria-controls="nuevoPedidoFormulario">NUEVO
             PEDIDO</button>
-        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button> -->
-    </p>
+        <button type="button" class="btn btn-success mx-5" data-bs-toggle="modal" data-bs-target="#buscarPedido">
+            BUSCAR PEDIDO</button>
+    </div>
     <div class="container-fluid row">
+        <!-- ! PACIENTE NUEVO -->
         <div class="col-6">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="collapse multi-collapse" id="nuevoPacienteFormulario">
                 <div class="card card-body">
                     <form class="m-2 col justify-content-center" onreset="resetForm()">
                         <!-- div container formulario -->
@@ -59,20 +63,23 @@
                                 placeholder="Obra Social del paciente">
                         </div>
                         <button type="reset" id="cargar" class="m-1 btn btn-success">RESTABLECER FORMULARIO</button>
-                        <button type="button" id="cargar" onclick="cargarPaciente()" class="m-1 btn btn-success">CARGAR
+                        <button type="button" id="cargar" onclick="cargarPaciente(), reset()"
+                            class="m-1 btn btn-success">CARGAR
                             PACIENTE</button>
                     </form> <!-- fin div container formulario -->
                 </div>
             </div>
         </div>
         <div class="col-6">
-            <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <!-- ! CARGA DE PEDIDOS -->
+            <div class="collapse multi-collapse" id="nuevoPedidoFormulario">
                 <div class="card card-body">
                     <form class="m-2 col justify-content-center" id="formPedidos">
-                        <!-- div container formulario -->
+                        <!-- div container formulario-->
                         <div class="mb-3 col">
                             <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="formPedidoNombre" placeholder="Nombre del paciente">
+                            <input type="text" class="form-control" id="formPedidoNombre"
+                                placeholder="Nombre del paciente">
                         </div>
                         <div class="mb-3 col">
                             <label for="formGroupExampleInput2" class="form-label">Apellido</label>
@@ -86,7 +93,7 @@
                         <div class="mb-3 col">
                             <label for="formGroupExampleInput2" class="form-label">Obra Social</label>
                             <select id="selectObraSocial" class="form-select opcion__obraSocial">
-                                <option selected value="">Elija su Obra Social</option>
+                                <option value="">Elija su Obra Social</option>
                                 <option value="SIN OBRA SOCIAL">NO POSEO OBRA SOCIAL</option>
                                 <option value="IOSPER">IOSPER</option>
                                 <option value="ISSPICA">ISSPICA</option>
@@ -103,26 +110,27 @@
                                 <option value="OTRA">OTRA OBRA SOCIAL</option>
                             </select>
                         </div>
-                        <div id="selectPedido" class="mb-3 col">
+                        <div id="divSelectPedido" class="mb-3 col">
                             <label for="formGroupExampleInput2" class="form-label">Tipo de Pedido</label>
                             <select id="selectPedido" class="form-select opcion__obraSocial">
                                 <option selected value="cirugia">CIRUGIA</option>
-                                <option id="selectOption" class="" value="consulta">CONSULTA</option>
-                                <option id="selectOption" class="" value="ecodoppler">ECODOPPLER</option>
-                                <option id="selectOption" class="" value="eeg - emg">ELECTROENCEFALOGRAMA - ELECTROMIOGRAFIA</option>
-                                <option id="selectOption" class="" value="gastroenterologia">GASTROENTEROLOGIA</option>
-                                <option id="selectOption" class="" value="hemodinamia">HEMODINAMIA</option>
-                                <option id="selectOption" class="" value="rmn - tac">RMN - TAC</option>
-                                <option id="selectOption" class="" value="rx">RADIOGRAFIA</option>
+                                <option value="consulta">CONSULTA</option>
+                                <option value="ecodoppler">ECODOPPLER</option>
+                                <option value="eeg - emg">ELECTROENCEFALOGRAMA - ELECTROMIOGRAFIA</option>
+                                <option value="gastroenterologia">GASTROENTEROLOGIA</option>
+                                <option value="hemodinamia">HEMODINAMIA</option>
+                                <option value="rmn - tac">RMN - TAC</option>
+                                <option value="rx">RADIOGRAFIA</option>
                             </select>
                         </div>
                         <div class="mb-3 col">
                             <label for="inputState" class="form-label">Pedido</label>
                             <input type="file" class="form-control" id="formFile" placeholder="Pedido">
                         </div>
-                        <button type="reset" type="reset" class="m-1 btn btn-success">RESTABLECER
+                        <button type="reset" onclick="reset()" class="m-1 btn btn-success">RESTABLECER
                             FORMULARIO</button>
-                        <button type="button" id="cargar" onclick="cargarPedido()" class="m-1 btn btn-success">CARGAR
+                        <button type="button" id="cargar" onclick="cargarPedido(), reset()"
+                            class="m-1 btn btn-success">CARGAR
                             PEDIDO</button>
                     </form> <!-- fin div container formulario -->
                 </div>
@@ -130,26 +138,89 @@
         </div>
     </div>
     </div>
+
+    <!-- ! BUSCAR PACIENTE MODAL -->
+    <div class="modal fade" id="buscarPaciente" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buscar Paciente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 col">
+                        <label for="formBuscarPaciente" class="form-label">Ingrese el DNI del paciente que desea
+                            buscar</label>
+                        <input type="text" class="form-control" id="dniTarget" placeholder="DNI del paciente">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-success" onclick="buscarPaciente()"
+                        data-bs-target="#searchResult" data-bs-toggle="modal">BUSCAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ! BUSCAR PEDIDO MODAL -->
+    <div class="modal fade" id="buscarPedido" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buscar Pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 col">
+                        <label for="formBuscarPedido" class="form-label">Ingrese el DNI del paciente que desea
+                            buscar</label>
+                        <input type="text" class="form-control" id="pedidoTarget" placeholder="DNI del paciente">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-success" onclick="buscarPedido()"
+                        data-bs-target="#searchResult" data-bs-toggle="modal">BUSCAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ! RESULTADO BUSCADO MODAL -->
+    <div class="modal fade" id="searchResult" tabindex="-1" aria-labelledby="modalSearchResult" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Resultado de Busqueda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="destinoResult" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Lista de cargados -->
 
-    <div class="container-fluid row">
+    <!-- <div class="container-fluid row">
         <div class="col-6 mt-4">
             <ul id="list__pacientes" class="list-group">
-                <!-- lista de pacientes -->
-                <li class="list-group-item">
-
-                </li>
+                <li class="list-group-item"></li>
             </ul>
         </div>
         <div class="col-6 mt-4">
             <ul id="list__pedidos" class="list-group">
-                <!-- lista de pedidos -->
-                <li class="list-group-item">
-
-                </li>
+                <li class="list-group-item"></li>
             </ul>
         </div>
-    </div>
+    </div> -->
+
 
     <script src="assets/js/app.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
