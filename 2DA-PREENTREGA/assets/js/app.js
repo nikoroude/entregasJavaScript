@@ -61,7 +61,8 @@ function printPaciente(P) {
     let destino = document.getElementById('destinoResult')
     destino.innerHTML = `<p>Paciente: ${P.fullName}</p>
                         <p>DNI: ${P.dni}</p>
-                        <p>Obra Social: ${P.obraSocial}</p>`;
+                        <p>Obra Social: ${P.obraSocial}</p>
+                        <p>Número ID: ${P.id}</p>`;
 }
 
 function printPedido(P) {
