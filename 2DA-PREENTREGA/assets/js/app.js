@@ -57,7 +57,7 @@ function printAll(key) {
 }
 
 function printPaciente(P) {
-    console.log(`Busqueda exitosa: ` , P);
+    console.log(`Busqueda exitosa: `, P);
     let destino = document.getElementById('destinoResult')
     destino.innerHTML = `<p>Paciente: ${P.fullName}</p>
                         <p>DNI: ${P.dni}</p>
@@ -66,7 +66,7 @@ function printPaciente(P) {
 }
 
 function printPedido(P) {
-    console.log(`Busqueda exitosa: ` , P);
+    console.log(`Busqueda exitosa: `, P);
     let destino = document.getElementById('destinoResult')
     destino.innerHTML = `<p>Paciente: ${P.fullName}</p>
                         <p>DNI: ${P.dni}</p>
@@ -143,37 +143,30 @@ const cargarPaciente = () => {
     namePatient = `${apellido}, ${nombre}`;
     obraSocial = obraSocial.toUpperCase();
 
-    let confirmacion = prompt(`¿Esta seguro de que desea cargar el nuevo paciente? \n Presione Y/N`)
 
-    if (confirmacion == "y" || confirmacion == "Y") {
-        idPaciente = idPaciente + 1;
-        const pacienteNuevo = new Paciente(namePatient, dni, obraSocial, idPaciente); //* asigna el nuevo paciente mediante la creacion del objeto definido
-        carga(arrayPacientes, pacienteNuevo);
-        listarArray(arrayPacientes);
-        //printAll("listaPacientesStorage");
-        //resetForm();
+    idPaciente = idPaciente + 1;
+    const pacienteNuevo = new Paciente(namePatient, dni, obraSocial, idPaciente); //* asigna el nuevo paciente mediante la creacion del objeto definido
+    carga(arrayPacientes, pacienteNuevo);
+    listarArray(arrayPacientes);
+    //printAll("listaPacientesStorage");
+    //resetForm();
 
 
 
-        let nuevoPaciente = document.createElement("li")
-        nuevoPaciente.classList.add('list-group-item')
-        nuevoPaciente.innerHTML = `<h4>Nombre y Apellido: ${nombre}, ${apellido}.</h4>
+    let nuevoPaciente = document.createElement("li")
+    nuevoPaciente.classList.add('list-group-item')
+    nuevoPaciente.innerHTML = `<h4>Nombre y Apellido: ${nombre}, ${apellido}.</h4>
                                     <p>DNI: ${dni}</p>
                                     <p>Obra Social: ${obraSocial}</p>`
 
-        document.addEventListener('DOMContentLoaded', function () {
-            let formulario = document.getElementById('formPedidos');
-            formulario.addEventListener('submit', function () {
-                formulario.reset();
-            });
+    document.addEventListener('DOMContentLoaded', function () {     //TODO *** no funciona, reveer el codigo
+        let formulario = document.getElementById('formPacientes');
+        formulario.addEventListener('submit', function () {
+            formulario.reset();
         });
+    });
 
-        // listaPacientes.append(nuevoPaciente);  //! agrega el nuevo paciente al listado en el html
-
-    } else if (confirmacion == "n" || confirmacion == "N") {
-        console.log(`Carga cancelada!`)
-        alert(`Carga cancelada!`)
-    }
+    // listaPacientes.append(nuevoPaciente);  //! agrega el nuevo paciente al listado en el html
 }
 
 //TODO-> CARGAR NUEVO PEDIDO
@@ -193,35 +186,26 @@ const cargarPedido = () => {
     pedido = pedido.toUpperCase();
 
 
+    idTramite = idTramite + 1;
+    const pedidoNuevo = new Pedidos(namePatient, dni, obraSocial, pedido, idTramite); //* asigna el nuevo paciente mediante la creacion del objeto definido
+    carga(arrayPedidos, pedidoNuevo);
+    listarArray(arrayPedidos);
 
-    let confirmacion = prompt(`¿Esta seguro de que desea cargar el nuevo pedido? \n Presione Y/N`)
-
-    if (confirmacion == "y" || confirmacion == "Y") {
-        idTramite = idTramite + 1;
-        const pedidoNuevo = new Pedidos(namePatient, dni, obraSocial, pedido, idTramite); //* asigna el nuevo paciente mediante la creacion del objeto definido
-        carga(arrayPedidos, pedidoNuevo);
-        listarArray(arrayPedidos);
-
-        let nuevoPedido = document.createElement("li")
-        nuevoPedido.classList.add('list-group-item')
-        nuevoPedido.innerHTML = `<h4>Nombre y Apellido: ${nombre}, ${apellido}.</h4>
+    let nuevoPedido = document.createElement("li")
+    nuevoPedido.classList.add('list-group-item')
+    nuevoPedido.innerHTML = `<h4>Nombre y Apellido: ${nombre}, ${apellido}.</h4>
                                     <p>DNI: ${dni}</p>
                                     <p>Obra Social: ${obraSocial}</p>
                                     <p>Pedido: ${pedido}</p>
                                     <p>ID: ${idTramite}</p>`
 
-        document.addEventListener('DOMContentLoaded', function () {
-            let formulario = document.getElementById('formul');
-            formulario.addEventListener('submit', function () {
-                formulario.reset();
-            });
+    document.addEventListener('DOMContentLoaded', function () {
+        let formulario = document.getElementById('formPedidos');
+        formulario.addEventListener('submit', function () {
+            formulario.reset();
         });
+    });
 
-        //listaPedidos.append(nuevoPedido);
-
-    } else if (confirmacion == "n" || confirmacion == "N") {
-        console.log(`Carga cancelada!`)
-        alert(`Carga cancelada!`)
-    }
+    //listaPedidos.append(nuevoPedido);
 }
 
