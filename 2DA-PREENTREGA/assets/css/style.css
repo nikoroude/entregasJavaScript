@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -20,12 +22,26 @@ body {
 
 h1 {
     margin: 0 2rem 0 2rem;
-    padding: 0 2rem 0 2rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 0.7rem 2rem 1rem 2rem;
+    font-family: 'Oswald', sans-serif;
     line-height: 3rem;
     font-size: 2rem;
     text-align: center;
     color: rgb(0, 0, 0);
+}
+
+#h1_title {
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 300px;
+    height: 80px;
 }
 
 .img {
@@ -37,7 +53,7 @@ h1 {
 h3 {
     display: inline-block;
     position: absolute;
-    
+
     bottom: 0;
     right: 0;
 }
@@ -85,6 +101,6 @@ li {
 
 
 
-#destinoResult > p {
+#destinoResult>p {
     line-height: 0.5rem;
 }

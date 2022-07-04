@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
 body {
+    font-family: 'Bebas Neue', cursive;
     background: #20002c;
     /* background: -webkit-linear-gradient(to right, #cbb4d4, #20002c);
     background: linear-gradient(to right, #cbb4d4, #20002c); */
+}
+
+h1{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem !important;
+    font-stretch: ultra-expanded !important;
 }
 
 .blur {
@@ -17,8 +27,12 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+a {
+    font-family: 'Oswald', sans-serif;
+}
+
 h1, a {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: 'Bebas Neue', cursive; */
     font-size: 2rem;
     text-align: center;
     color: aliceblue;

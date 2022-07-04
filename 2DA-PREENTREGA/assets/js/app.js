@@ -159,12 +159,14 @@ const cargarPaciente = () => {
                                     <p>DNI: ${dni}</p>
                                     <p>Obra Social: ${obraSocial}</p>`
 
-    document.addEventListener('DOMContentLoaded', function () {     //TODO *** no funciona, reveer el codigo
+    // document.addEventListener('DOMContentLoaded', function () {     //TODO *** no funciona, reveer el codigo
         let formulario = document.getElementById('formPacientes');
-        formulario.addEventListener('submit', function () {
+        formulario.addEventListener('carga', function () {
             formulario.reset();
         });
-    });
+    // });
+
+    // document.getElementById("formPacientes").addEventListener("reset")
 
     // listaPacientes.append(nuevoPaciente);  //! agrega el nuevo paciente al listado en el html
 }
