@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>2da PRE-ENTREGA</title>
+</head>
+
+<body class="bg-dark bg-gradient">
+    <header>
+        <nav class="navbar bg-secondary bg-gradient text-white">
+            <div class="container-fluid">
+                <span class="navbar-brand text-white mb-0 h1">JAVASCRIPT - 2da PRE-ENTREGA</span>
+                <div>
+                    <button type="button" id="volver" class="text-white btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#loginAdmin">ADMIN</button>
+                    <button type="button" id="volver" onclick="alert(`Saliendo de la pagina`)"
+                        class="text-white btn btn-success"><a href="../index.html">VOLVER</a></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--TODO- LOGIN MODAL -->
+    <div class="modal fade" id="loginAdmin" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img class="m-0-auto" src="assets/img/login-icon.png" alt="">
+                    <div class="mb-3 col">
+                        <label for="formLogin" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="username" placeholder="Usuario" required>
+                        <label for="formLogin" class="form-label">Contraña</label>
+                        <div id="mensajeError"></div>
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-primary" data-bs-target="#registro"
+                        data-bs-toggle="modal">REGISTRARME</button>
+                    <button type="button" class="btn btn-success" onclick="login()">LOGIN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="registro" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-3 col">
+                        <label for="formLogin" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="registroUsername" placeholder="Usuario" required>
+                    <label for="formLogin" class="form-label">Contraña</label>
+                    <input type="password" class="form-control" id="registroPassword" placeholder="Contraseña" required>
+                    <div id="liveAlertPlaceholder"></div>
+                    <label for="formLogin" class="form-label">Repetir Contraña</label>
+                    <input type="password" class="form-control" id="repeatPassword" placeholder="Repetir Contraseña"
+                        required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="registro()">REGISTRARME</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--! titulo  -->
+    <div id="h1_title">
+        <h1 class="text-white h1">Autogestión</h1>
+    </div>
+
+    <div class="menu container-fluid navbar m-0-auto">
+        <a class="m-2 btn btn-success mx-5" data-bs-toggle="collapse" href="#nuevoPacienteFormulario" role="button"
+            aria-expanded="false" aria-controls="nuevoPacienteFormulario">NUEVO PACIENTE</a>
+        <button type="button" class="btn btn-success mx-5" data-bs-toggle="modal" data-bs-target="#buscarPaciente">
+            BUSCAR PACIENTE</button>
+        <button class="m-2 btn btn-success mx-5" type="button" data-bs-toggle="collapse"
+            data-bs-target="#nuevoPedidoFormulario" aria-expanded="false" aria-controls="nuevoPedidoFormulario">NUEVO
+            PEDIDO</button>
+        <button type="button" class="btn btn-success mx-5" data-bs-toggle="modal" data-bs-target="#buscarPedido">
+            BUSCAR PEDIDO</button>
+    </div>
+    <div class="container-fluid row">
+        <!-- ! PACIENTE NUEVO -->
+        <div class="col-6">
+            <div class="collapse multi-collapse" id="nuevoPacienteFormulario">
+                <div class="card card-body">
+                    <form class="m-2 col justify-content-center" id="formPacientes" onreset="resetForm()">
+                        <!--? div container formulario -->
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="formNombre" placeholder="Nombre del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="formApellido"
+                                placeholder="Apellido del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="formDni" placeholder="DNI del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Obra Social</label>
+                            <input type="text" class="form-control" id="formObraSocial"
+                                placeholder="Obra Social del paciente">
+                        </div>
+                        <button type="reset" id="cargar" class="m-1 btn btn-success">RESTABLECER FORMULARIO</button>
+                        <button type="button" id="cargar" data-bs-toggle="modal" data-bs-target="#confirm"
+                            class="m-1 btn btn-success">CARGAR
+                            PACIENTE</button>
+                    </form>
+                    <!--? fin div container formulario -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ! CONFIRM PACIENTE MODAL -->
+        <div class="modal fade" id="confirm" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirm_Modal">¿Estas seguro que decias realizar la carga?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            value="cancel"></button>
+                    </div>
+                    <div class="modal-footer container-fluid">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                        <button type="reset" class="btn btn-success" data-bs-dismiss="modal"
+                            onclick="cargarPaciente()">CARGAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <!-- ! CARGA DE PEDIDOS -->
+            <div class="collapse multi-collapse" id="nuevoPedidoFormulario">
+                <div class="card card-body">
+                    <form class="m-2 col justify-content-center" id="formPedidos">
+                        <!--? div container formulario-->
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="formPedidoNombre"
+                                placeholder="Nombre del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="formPedidoApellido"
+                                placeholder="Apellido del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="formPedidoDni" placeholder="DNI del paciente">
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Obra Social</label>
+                            <select id="selectObraSocial" class="form-select opcion__obraSocial">
+                                <option value="">Elija su Obra Social</option>
+                                <option value="SIN OBRA SOCIAL">NO POSEO OBRA SOCIAL</option>
+                                <option value="IOSPER">IOSPER</option>
+                                <option value="ISSPICA">ISSPICA</option>
+                                <option value="PAMI">PAMI</option>
+                                <option value="PREVENCION">PREVENCION SALUD</option>
+                                <option value="PODER JUDICIAL">PODER JUDICIAL</option>
+                                <option value="POLICIA FEDERAL">POLICIA FEDERAL</option>
+                                <option value="SANCOR SALUD">SANCOR SALUD</option>
+                                <option value="SOMU">SOMU</option>
+                                <option value="OSPE">OSPE</option>
+                                <option value="OSDE">OSDE</option>
+                                <option value="UNIMEDICA">UNIMEDICA</option>
+                                <option value="SWISS MEDICAL">SWISS MEDICAL</option>
+                                <option value="OTRA">OTRA OBRA SOCIAL</option>
+                            </select>
+                        </div>
+                        <div id="divSelectPedido" class="mb-3 col">
+                            <label for="formGroupExampleInput2" class="form-label">Tipo de Pedido</label>
+                            <select id="selectPedido" class="form-select opcion__obraSocial">
+                                <option selected value="cirugia">CIRUGIA</option>
+                                <option value="consulta">CONSULTA</option>
+                                <option value="ecodoppler">ECODOPPLER</option>
+                                <option value="eeg - emg">ELECTROENCEFALOGRAMA - ELECTROMIOGRAFIA</option>
+                                <option value="gastroenterologia">GASTROENTEROLOGIA</option>
+                                <option value="hemodinamia">HEMODINAMIA</option>
+                                <option value="rmn - tac">RMN - TAC</option>
+                                <option value="rx">RADIOGRAFIA</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 col">
+                            <label for="inputState" class="form-label">Pedido</label>
+                            <input type="file" class="form-control" id="formFile" placeholder="Pedido">
+                        </div>
+                        <button type="reset" onclick="reset()" class="m-1 btn btn-success">RESTABLECER
+                            FORMULARIO</button>
+                        <button type="button" id="cargar" data-bs-toggle="modal" data-bs-target="#confirmPedido"
+                            class="m-1 btn btn-success">CARGAR
+                            PEDIDO</button>
+                    </form>
+                    <!--? fin div container formulario -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- ! CONFIRM PEDIDO MODAL -->
+    <div class="modal fade" id="confirmPedido" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirm_Modal">¿Estas seguro que decias realizar la carga?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        value="cancel"></button>
+                </div>
+                <div class="modal-footer container-fluid">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+                        onclick="cargarPedido()">CARGAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ! BUSCAR PACIENTE MODAL -->
+    <div class="modal fade" id="buscarPaciente" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buscar Paciente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 col">
+                        <label for="formBuscarPaciente" class="form-label">Ingrese el DNI del paciente que desea
+                            buscar</label>
+                        <input type="text" class="form-control" id="dniTarget" placeholder="DNI del paciente">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-success" onclick="buscarPaciente()"
+                        data-bs-target="#searchResult" data-bs-toggle="modal">BUSCAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ! BUSCAR PEDIDO MODAL -->
+    <div class="modal fade" id="buscarPedido" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buscar Pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 col">
+                        <label for="formBuscarPedido" class="form-label">Ingrese el DNI del paciente que desea
+                            buscar</label>
+                        <input type="text" class="form-control" id="pedidoTarget" placeholder="DNI del paciente">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-success" onclick="buscarPedido()"
+                        data-bs-target="#searchResult" data-bs-toggle="modal">BUSCAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ! RESULTADO BUSCADO MODAL -->
+    <div class="modal fade" id="searchResult" tabindex="-1" aria-labelledby="modalSearchResult" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Resultado de Busqueda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="destinoResult" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--! Lista de cargados -->
+
+    <div class="container-fluid row">
+        <div class="col-6 mt-4">
+            <ul id="list__pacientes" class="list-group">
+                <li class="list-group-item"></li>
+            </ul>
+        </div>
+        <div class="col-6 mt-4">
+            <ul id="list__pedidos" class="list-group">
+                <li class="list-group-item"></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
