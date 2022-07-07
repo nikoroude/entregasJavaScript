@@ -45,7 +45,7 @@ class Pedidos {
     }
 }
 
-class usuario {
+class Usuario {
     constructor(userName, password) {
         this.user = userName;
         this.pass = password;
@@ -58,15 +58,16 @@ function registro () {
     let user = document.getElementById("registroUsername").value;
     let password = document.getElementById("registroPassword").value;
     let repeatPassword = document.getElementById("repeatPassword").value;
-
-    let confirm = password === repeatPassword && cargaUsuarios(arrayUsers,user, password);
-
-    (confirm === true) ? location.href="../pages/admin.html" : error ('Las contraseñas no coinciden');
+    let confirmacion = true;
+    console.log('toma datos ok')
+    confirmacion = password == repeatPassword && cargaUsuarios(arrayUsers,user, password);
+    
+    (confirmacion !== true) ? mensjError ('Las contraseñas no coinciden') : location.href="https://nikoroude.github.io/coopmedica/";
 }
 
 function cargaUsuarios(arrayDestino, user, password) {
-    new usuario (user, password)
-    arrayDestino.push(usuario);
+    const nuevoUsuario = new Usuario (user, password);
+    arrayDestino.push(nuevoUsuario);
     let arrayJSON = JSON.stringify(arrayDestino);
     localStorage.setItem("listaUsuariosStorage", arrayJSON);
 }
@@ -77,18 +78,18 @@ function login () {
 
     let userArray = JSON.parse(localStorage.getItem("listaUsuariosStorage"));
 
-    if ((userArray.length === null)) {
+    if ((userArray.length == 0)) {
         error('No hay usuarios registrados');
     } else if ((user === null) || (password === null)) {
         error('No se ingreso ningun usuario o contraseña');
     } else {
     for (let i=0; i<=userArray.length; i++) {
-        (userArray[i].user === user && userArray[i].pass === password) ? location.href="../assets/pages/admin.html" : error('Usuario o contraseña incorrectos');
+        (userArray[i].user == user && userArray[i].pass == password) ? location.href="https://nikoroude.github.io/coopmedica/" : error('Usuario o contraseña incorrectos');
         }
     }
 }
 
-function error (mensaje) {
+function mensjError (mensaje) {
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
 const alert = (mensaje) => {
