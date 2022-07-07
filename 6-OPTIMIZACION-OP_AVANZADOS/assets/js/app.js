@@ -84,7 +84,7 @@ function login () {
         error('No se ingreso ningun usuario o contraseña');
     } else {
     for (let i=0; i<=userArray.length; i++) {
-        (userArray[i].user == user && userArray[i].pass == password) ? location.href="https://nikoroude.github.io/coopmedica/" : error('Usuario o contraseña incorrectos');
+        (userArray[i].user == user && userArray[i].pass === password) ? location.href="https://nikoroude.github.io/coopmedica/" : error('Usuario o contraseña incorrectos');
         }
     }
 }
