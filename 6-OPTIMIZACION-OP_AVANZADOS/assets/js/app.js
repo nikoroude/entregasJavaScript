@@ -62,7 +62,7 @@ function registro () {
     console.log('toma datos ok')
     confirmacion = password == repeatPassword && cargaUsuarios(arrayUsers,user, password);
     
-    (confirmacion !== true) ? mensjError ('Las contraseñas no coinciden') : location.href="https://nikoroude.github.io/coopmedica/";
+    (confirmacion !== true) ? mensjError ('Las contraseñas no coinciden') : location.href="https://nikoroude.github.io/entregasJavaScript/6-OPTIMIZACION-OP_AVANZADOS/assets/pages/admin.html";
 }
 
 function cargaUsuarios(arrayDestino, user, password) {
@@ -79,12 +79,12 @@ function login () {
     let userArray = JSON.parse(localStorage.getItem("listaUsuariosStorage"));
 
     if ((userArray.length == 0)) {
-        error('No hay usuarios registrados');
+        mensjError('No hay usuarios registrados');
     } else if ((user === null) || (password === null)) {
-        error('No se ingreso ningun usuario o contraseña');
+        mensjError('No se ingreso ningun usuario o contraseña');
     } else {
     for (let i=0; i<=userArray.length; i++) {
-        (userArray[i].user == user && userArray[i].pass === password) ? location.href="https://nikoroude.github.io/coopmedica/" : error('Usuario o contraseña incorrectos');
+        (userArray[i].user == user && userArray[i].pass === password) ? location.href="https://nikoroude.github.io/entregasJavaScript/6-OPTIMIZACION-OP_AVANZADOS/assets/pages/admin.html" : mensjError('Usuario o contraseña incorrectos');
         }
     }
 }
