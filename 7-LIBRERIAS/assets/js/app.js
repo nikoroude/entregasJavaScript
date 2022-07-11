@@ -243,6 +243,14 @@ const cargarPaciente = () => {
         });
     // });
 
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Paciente cargado con éxito!!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
     // document.getElementById("formPacientes").addEventListener("reset")
 
     // listaPacientes.append(nuevoPaciente);  //! agrega el nuevo paciente al listado en el html
@@ -284,6 +292,14 @@ const cargarPedido = () => {
             formulario.reset();
         });
     });
+
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Su pedido ha sido cargado con éxito!!',
+        showConfirmButton: false,
+        timer: 1500
+      })
 
     //listaPedidos.append(nuevoPedido);
 }
