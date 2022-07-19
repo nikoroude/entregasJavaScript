@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>2da PRE-ENTREGA - ADMIN</title>
+</head>
+
+<body class="bg-dark bg-gradient">
+    <header>
+        <nav class="navbar bg-secondary bg-gradient text-white">
+            <div class="container-fluid">
+                <span class="navbar-brand text-white mb-0 h1">JAVASCRIPT - 2da PRE-ENTREGA</span>
+                <div>
+                    <button type="button" id="volver" class="text-white btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#loginAdmin">ADMIN</button>
+                    <button type="button" id="volver" class="text-white btn btn-success"><a href="../../index.html">VOLVER</a></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <!--! titulo  -->
+    <div id="h1_title">
+        <h1 class="text-white h1">Admin</h1>
+    </div>
+    <div class="container-fluid justify-content-between">
+        <div class="d-flex align-items-start justify-content-between">
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                    aria-selected="true">Inicio</button>
+                <button class="nav-link" id="admin-pacientes-tab" data-bs-toggle="pill"
+                    data-bs-target="#admin-pacientes" type="button" role="tab" aria-controls="admin-pacientes"
+                    aria-selected="false" onclick="printAll('listaPacientesStorage')">Pacientes</button>
+                <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled"
+                    aria-selected="false" >Pedidos</button>
+                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
+                    aria-selected="false">Mensajes</button>
+                <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
+                    data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
+                    aria-selected="false" disabled>Settings</button>
+            </div>
+            <div class="tab-content justify-content-start text-white" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab" tabindex="0">..dasdasd.</div>
+                <div class="tab-pane fade" id="admin-pacientes" role="tabpanel" aria-labelledby="v-pills-profile-tab"
+                    tabindex="0"></div>
+                <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab"
+                    tabindex="0">...</div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
+                    tabindex="0">...</div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"
+                    tabindex="0">...</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/app.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
