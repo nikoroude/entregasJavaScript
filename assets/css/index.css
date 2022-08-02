@@ -16,11 +16,12 @@ h1{
 
 .blur {
     /* position: absolute; */
+    padding-left: 40px;
     margin: 10px;
     bottom: 25px;
     right: 162px;
     width: 800px;
-    height: 500px;
+    height: 700px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
     border-radius: 10px;
